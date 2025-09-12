@@ -60,6 +60,8 @@
     "span": "cpp",
     "iostream": "cpp",
     "functional": "cpp",
-    "cmath": "cpp"
+    "cmath": "cpp",
+    "new": "cpp",
+    "ostream": "cpp"
   }
 }

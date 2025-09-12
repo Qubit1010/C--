@@ -291,8 +291,6 @@ using namespace std;
 //     return 0;
 // }
 
-
-
 //* Reverse a Stack using Another Stack
 // Node structure for linked list
 // struct Node {
@@ -383,7 +381,6 @@ using namespace std;
 //     return 0;
 // }
 
-
 //* Balanced Parentheses problem using a stack (linked list) step by step.
 // Node structure for stack
 // struct Node {
@@ -464,125 +461,249 @@ using namespace std;
 
 //* Linked List with Capacity Limit
 // Node structure
+// struct Node {
+//     int data;
+//     Node* next;
+// };
+
+// // Stack class (linked list implementation)
+// class Stack {
+// private:
+//     Node* top;
+//     int capacity;   // maximum stack size
+//     int count;      // current number of elements
+
+// public:
+//     // Constructor
+//     Stack(int size) {
+//         capacity = size;
+//         top = nullptr;
+//         count = 0;
+//     }
+
+//     // Push operation
+//     void push(int value) {
+//         if (count == capacity) {
+//             cout << "Stack Overflow! Cannot push " << value << endl;
+//             return;
+//         }
+//         Node* newNode = new Node();
+//         newNode->data = value;
+//         newNode->next = top;
+//         top = newNode;
+//         count++;
+//         cout << value << " pushed to stack.\n";
+//     }
+
+//     // Pop operation
+//     int pop() {
+//         if (isEmpty()) {
+//             cout << "Stack Underflow! Cannot pop.\n";
+//             return -1;
+//         }
+//         Node* temp = top;
+//         int popped = temp->data;
+//         top = top->next;
+//         delete temp;
+//         count--;
+//         return popped;
+//     }
+
+//     // Peek operation
+//     int peek() {
+//         if (isEmpty()) {
+//             cout << "Stack is empty.\n";
+//             return -1;
+//         }
+//         return top->data;
+//     }
+
+//     // Check if empty
+//     bool isEmpty() {
+//         return top == nullptr;
+//     }
+
+//     // Display stack
+//     void display() {
+//         if (isEmpty()) {
+//             cout << "Stack is empty.\n";
+//             return;
+//         }
+//         cout << "Stack elements (top to bottom): ";
+//         Node* current = top;
+//         while (current != nullptr) {
+//             cout << current->data << " ";
+//             current = current->next;
+//         }
+//         cout << endl;
+//     }
+// };
+
+// int main() {
+//     int size, choice, value;
+//     cout << "Enter stack size (capacity): ";
+//     cin >> size;
+
+//     Stack s(size);
+
+//     do {
+//         cout << "\n--- Stack Menu ---\n";
+//         cout << "1. Push\n";
+//         cout << "2. Pop\n";
+//         cout << "3. Peek\n";
+//         cout << "4. Display\n";
+//         cout << "5. Exit\n";
+//         cout << "Enter choice: ";
+//         cin >> choice;
+
+//         switch (choice) {
+//         case 1:
+//             cout << "Enter value to push: ";
+//             cin >> value;
+//             s.push(value);
+//             break;
+//         case 2:
+//             value = s.pop();
+//             if (value != -1) cout << "Popped: " << value << endl;
+//             break;
+//         case 3:
+//             value = s.peek();
+//             if (value != -1) cout << "Top element: " << value << endl;
+//             break;
+//         case 4:
+//             s.display();
+//             break;
+//         case 5:
+//             cout << "Exiting...\n";
+//             break;
+//         default:
+//             cout << "Invalid choice!\n";
+//         }
+//     } while (choice != 5);
+
+//     return 0;
+// }
+
+
+// create stack using arrays without class implementation
+// #define MAX 5
+// int stack[MAX];
+// int top = -1;
+
+// bool isEmpty() { return top == -1; }
+
+// bool isFull() { return top == MAX - 1; }
+
+//  void push(int x) {
+//      if (isFull()) {
+//          cout << "Stack Overflow!\n";
+//          return;
+//     }
+//      stack[++top] = x;
+//  }
+
+//  void pop() {
+//      if (isEmpty()) {
+//          cout << "Stack Underflow!\n";
+//          return;
+//      }
+//      top--;
+//  }
+
+//  int peek() {
+//      if (isEmpty()) {
+//          cout << "Stack is empty!\n";
+//          return -1;
+//      }
+//      return stack[top];
+//  }
+
+//  void display() {
+//      if (isEmpty()) {
+//          cout << "Stack is empty!\n";
+//          return;
+//      }
+//      cout << "Stack elements: ";
+//      for (int i = top; i >= 0; i--)
+//          cout << stack[i] << " ";
+//      cout << endl;
+//  }
+
+//  int main() {
+//      push(10);
+//      push(20);
+//      push(30);
+//      display();  // 30 20 10
+//      cout << "Top element: " << peek() << endl;
+//      pop();
+//      display();  // 20 10
+    
+//      return 0;
+//  }
+
+ // Stack using linked list without class implementation
+
 struct Node {
     int data;
     Node* next;
 };
 
-// Stack class (linked list implementation)
-class Stack {
-private:
-    Node* top;
-    int capacity;   // maximum stack size
-    int count;      // current number of elements
+Node* top = nullptr;
 
-public:
-    // Constructor
-    Stack(int size) {
-        capacity = size;
-        top = nullptr;
-        count = 0;
-    }
+bool isEmpty() {
+    return top == nullptr;
+}
 
-    // Push operation
-    void push(int value) {
-        if (count == capacity) {
-            cout << "Stack Overflow! Cannot push " << value << endl;
-            return;
-        }
-        Node* newNode = new Node();
-        newNode->data = value;
-        newNode->next = top;
-        top = newNode;
-        count++;
-        cout << value << " pushed to stack.\n";
-    }
+void push(int x) {
+    Node* newNode = new Node;
+    newNode->data = x;
+    newNode->next = top;
+    top = newNode;
+}
 
-    // Pop operation
-    int pop() {
-        if (isEmpty()) {
-            cout << "Stack Underflow! Cannot pop.\n";
-            return -1;
-        }
-        Node* temp = top;
-        int popped = temp->data;
-        top = top->next;
-        delete temp;
-        count--;
-        return popped;
+void pop() {
+    if (isEmpty()) {
+        cout << "Stack Underflow!\n";
+        return;
     }
+    Node* temp = top;
+    top = top->next;
+    delete temp;
+}
 
-    // Peek operation
-    int peek() {
-        if (isEmpty()) {
-            cout << "Stack is empty.\n";
-            return -1;
-        }
-        return top->data;
+int peek() {
+    if (isEmpty()) {
+        cout << "Stack is empty!\n";
+        return -1;
     }
+    return top->data;
+}
 
-    // Check if empty
-    bool isEmpty() {
-        return top == nullptr;
+void display() {
+    if (isEmpty()) {
+        cout << "Stack is empty!\n";
+        return;
     }
-
-    // Display stack
-    void display() {
-        if (isEmpty()) {
-            cout << "Stack is empty.\n";
-            return;
-        }
-        cout << "Stack elements (top to bottom): ";
-        Node* current = top;
-        while (current != nullptr) {
-            cout << current->data << " ";
-            current = current->next;
-        }
-        cout << endl;
+    cout << "Stack elements: ";
+    Node* temp = top;
+    while (temp != nullptr) {
+        cout << temp->data << " ";
+        temp = temp->next;
     }
-};
+    cout << endl;
+}
 
 int main() {
-    int size, choice, value;
-    cout << "Enter stack size (capacity): ";
-    cin >> size;
+    push(10);
+    push(20);
+    push(30);
+    display();  // 30 20 10
+    cout << "Top element: " << peek() << endl;
+    pop();
+    display();  // 20 10
 
-    Stack s(size);
-
-    do {
-        cout << "\n--- Stack Menu ---\n";
-        cout << "1. Push\n";
-        cout << "2. Pop\n";
-        cout << "3. Peek\n";
-        cout << "4. Display\n";
-        cout << "5. Exit\n";
-        cout << "Enter choice: ";
-        cin >> choice;
-
-        switch (choice) {
-        case 1:
-            cout << "Enter value to push: ";
-            cin >> value;
-            s.push(value);
-            break;
-        case 2:
-            value = s.pop();
-            if (value != -1) cout << "Popped: " << value << endl;
-            break;
-        case 3:
-            value = s.peek();
-            if (value != -1) cout << "Top element: " << value << endl;
-            break;
-        case 4:
-            s.display();
-            break;
-        case 5:
-            cout << "Exiting...\n";
-            break;
-        default:
-            cout << "Invalid choice!\n";
-        }
-    } while (choice != 5);
+    // Free remaining nodes
+    while (!isEmpty()) pop();
 
     return 0;
 }
