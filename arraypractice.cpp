@@ -54,7 +54,7 @@ using namespace std;
  
 
 // int main() {
-//     int ages[5]; // Array to store ages of 5 persons
+//     int ages[5]; //* Array to store ages of 5 persons
 
 //     // Input ages
 //     cout << "Hello, Enter the ages of 5 persons:" << endl;
@@ -123,50 +123,49 @@ using namespace std;
 //     return 0;
 // }
 
+int main() {
+    int arr[100] = {1, 2, 3, 5, 6};
+    int size = 5; // Current size of the array
+    int element = 4; // Element to be inserted
+    int index = 3; // Position to insert the element
 
-// int main() {
-//     int arr[100] = {1, 2, 3, 5, 6};
-//     int size = 5; // Current size of the array
-//     int element = 4; // Element to be inserted
-//     int index = 3; // Position to insert the element
+    // Shift elements to the right to make space for the new element
+    for (int i = size; i > index; i--) {
+        arr[i] = arr[i - 1];
+    }
 
-//     // Shift elements to the right to make space for the new element
-//     for (int i = size; i > index; i--) {
-//         arr[i] = arr[i - 1];
-//     }
+    // Insert the new element at the desired position
+    arr[index] = element;
+    size++; // Increase the size of the array
 
-//     // Insert the new element at the desired position
-//     arr[index] = element;
-//     size++; // Increase the size of the array
+    // Print the updated array
+    for (int i = 0; i < size; i++) {
+        std::cout << arr[i] << " ";
+    }
 
-//     // Print the updated array
-//     for (int i = 0; i < size; i++) {
-//         std::cout << arr[i] << " ";
-//     }
-
-//     return 0;
-// }
+    return 0;
+}
 
 
-// int main() {
-//     int arr[5] = { 1, 2, 3, 4, 5 };
-//     int index = 2; // Index of the element to be deleted
-//     int size = 5; // Current size of the array
+int main() {
+    int arr[5] = { 1, 2, 3, 4, 5 };
+    int index = 2; // Index of the element to be deleted
+    int size = 5; // Current size of the array
 
-//     // Shift elements to the left to fill the gap
-//     for (int i = index; i < size - 1; i++) {
-//         arr[i] = arr[i + 1];
-//     }
+    // Shift elements to the left to fill the gap
+    for (int i = index; i < size - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
 
-//     size--; // Decrease the size of the array
+    size--; // Decrease the size of the array
 
-//     // Print the updated array
-//     for (int i = 0; i < size; i++) {
-//         std::cout << arr[i] << " ";
-//     }
+    // Print the updated array
+    for (int i = 0; i < size; i++) {
+        std::cout << arr[i] << " ";
+    }
 
-//     return 0;
-// }
+    return 0;
+}
 
 
 // int main() {

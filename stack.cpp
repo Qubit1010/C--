@@ -206,7 +206,6 @@ using namespace std;
 // }
 
 //* Insert at a Specific Position
-
 // // Function to create a new node
 // Node* createNode(int value) {
 //     Node* newNode = new Node;
@@ -215,7 +214,7 @@ using namespace std;
 //     return newNode;
 // }
 
-// // Function to insert at a specific position (1-based index)
+// Function to insert at a specific position (1-based index)
 // void insertAtPosition(Node*& head, int value, int position) {
 //     Node* newNode = createNode(value);
 
@@ -233,18 +232,15 @@ using namespace std;
 //         temp = temp->next;
 //     }
 
-
 //     if (temp == nullptr) {
 //         cout << "Position out of range!" << endl;
 //         delete newNode; // avoid memory leak
 //         return;
 //     }
 
-
 //     newNode->next = temp->next;
 //     temp->next = newNode;
 // }
-
 
 //* Function to display the linked list
 // void displayList(Node* head) {
@@ -352,7 +348,7 @@ using namespace std;
 //     }
 // };
 
-// // Function to reverse stack using another stack
+// //* Function to reverse stack using another stack
 // void reverseStack(Stack &s1, Stack &s2) {
 //     while (!s1.isEmpty()) {
 //         int value = s1.pop();
@@ -419,14 +415,14 @@ using namespace std;
 //     }
 // };
 
-// // Helper function: check if two brackets match
+// //* Helper function: check if two brackets match
 // bool isMatchingPair(char open, char close) {
 //     return (open == '(' && close == ')') ||
 //            (open == '[' && close == ']') ||
 //            (open == '{' && close == '}');
 // }
 
-// // Function to check balanced parentheses
+// //* Function to check balanced parentheses
 // bool isBalanced(const string& expr) {
 //     Stack s;
 
@@ -444,7 +440,7 @@ using namespace std;
 //     return s.isEmpty(); // must be empty at the end
 // }
 
-// // Driver code
+// //* Driver code
 // int main() {
 //     string expr1 = "((a+b)*c)";
 //     string expr2 = "((a+b)";
@@ -585,7 +581,7 @@ using namespace std;
 // }
 
 
-// create stack using arrays without class implementation
+//* create stack using arrays without class implementation
 // #define MAX 5
 // int stack[MAX];
 // int top = -1;
@@ -641,8 +637,7 @@ using namespace std;
 //      return 0;
 //  }
 
- // Stack using linked list without class implementation
-
+ //* Stack using linked list without class implementation
 struct Node {
     int data;
     Node* next;
@@ -679,6 +674,8 @@ int peek() {
     return top->data;
 }
 
+// insert at the position
+
 void display() {
     if (isEmpty()) {
         cout << "Stack is empty!\n";
@@ -701,9 +698,143 @@ int main() {
     cout << "Top element: " << peek() << endl;
     pop();
     display();  // 20 10
-
     // Free remaining nodes
     while (!isEmpty()) pop();
 
     return 0;
 }
+
+//* Balanced Parentheses problem using a stack (linked list) step by step.
+// Node structure for stack (linked list)
+// struct Node {
+//     char data;
+//     Node* next;
+// };
+
+// Node* top = nullptr;
+
+// // Stack operations (without class)
+// bool isEmpty() {
+//     return top == nullptr;
+// }
+
+// void push(char x) {
+//     Node* newNode = new Node;
+//     newNode->data = x;
+//     newNode->next = top;
+//     top = newNode;
+// }
+
+// char pop() {
+//     if (isEmpty()) {
+//         return '\0'; // return null char if underflow
+//     }
+//     Node* temp = top;
+//     char popped = top->data;
+//     top = top->next;
+//     delete temp;
+//     return popped;
+// }
+
+// // Helper function: check if two brackets match
+// bool isMatchingPair(char open, char close) {
+//     return (open == '(' && close == ')') ||
+//            (open == '[' && close == ']') ||
+//            (open == '{' && close == '}');
+// }
+
+// // Function to check balanced parentheses
+// bool isBalanced(const string& expr) {
+//     for (char ch : expr) {
+//         if (ch == '(' || ch == '[' || ch == '{') {
+//             push(ch); // push opening brackets
+//         }
+//         else if (ch == ')' || ch == ']' || ch == '}') {
+//             if (isEmpty()) return false; // no matching open
+//             char topChar = pop();
+//             if (!isMatchingPair(topChar, ch)) return false;
+//         }
+//     }
+//     return isEmpty(); // must be empty at the end
+// }
+
+// int main() {
+//     string expr1 = "((a+b)*c)";
+//     string expr2 = "((a+b)";
+
+//     cout << expr1 << " → "
+//          << (isBalanced(expr1) ? "Balanced" : "Not Balanced") << endl;
+
+//     // Reset stack for next test
+//     while (!isEmpty()) pop();
+
+//     cout << expr2 << " → "
+//          << (isBalanced(expr2) ? "Balanced" : "Not Balanced") << endl;
+
+//     // Free any remaining nodes (safety)
+//     while (!isEmpty()) pop();
+//     return 0;
+// }
+
+
+//* infix to postfix conversion using stack (linked list)
+// struct Node {
+//     int data;
+//     Node* next;
+// };
+
+// Node* top = nullptr;
+
+// bool isEmpty() { return top == nullptr; }
+
+// void push(int x) {
+//     Node* newNode = new Node;
+//     newNode->data = x;
+//     newNode->next = top;
+//     top = newNode;
+// }
+
+// void pop() {
+//     if (isEmpty()) {
+//         cout << "Stack Underflow!\n";
+//         return;
+//     }
+//     Node* temp = top;
+//     top = top->next;
+//     delete temp;
+// }
+    
+// int peek() {
+//     if (isEmpty()) {
+//         cout << "Stack is empty!\n";
+//         return -1;
+//     }
+//     return top->data;
+// }
+
+// // insert at the position
+// void display() {
+//     if (isEmpty()) {
+//         cout << "Stack is empty!\n";
+//         return;
+//     }
+//     cout << "Stack elements: ";
+//     Node* temp = top;
+//     while (temp != nullptr) {
+//         cout << temp->data << " ";
+//         temp = temp->next;
+//     }
+//     cout << endl;
+// }
+// int main() {
+//     push(10);
+//     push(20);
+//     push(30);
+//     display();  // 30 20 10
+//     cout << "Top element: " << peek() << endl;
+//     pop();
+//     display();  // 20 10
+//     // Free remaining nodes
+//     while (!isEmpty()) pop();
+//     return 0;
+// }
